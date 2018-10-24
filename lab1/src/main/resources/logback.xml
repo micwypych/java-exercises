@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!--more encoders at https://logback.qos.ch/manual/appenders.html-->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!--another possible target: System.err-->
+    <target>System.out</target>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>testFile.log</file>
+    <append>true</append>
+    <!-- set immediateFlush to false for much higher logging throughput -->
+    <immediateFlush>true</immediateFlush>
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%-4relative [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <logger name="pl.edu.agh.kis.ooprogramming" level="${logging.level.pl.edu.agh.kis.ooprogramming:-INFO}">
+    <appender-ref ref="FILE"/>
+  </logger>
+
+  <root level="${logging.level.root:-TRACE}">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
