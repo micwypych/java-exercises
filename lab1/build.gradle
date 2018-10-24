@@ -1,0 +1,16 @@
+plugins {
+  id "application"
+}
+
+//required by application plugin, specifies class with main method to execute when the application is run
+mainClassName = 'pl.edu.agh.kis.ooprogramming.example.App'
+
+dependencies {
+   //adds to classpath all classes produced by labXXX subproject
+   //implementation project(":labXXX")
+   
+   //adds dependency of external package (some packages are already added by ../build.gradle
+   //implementation group: "com.google.inject", name: "guice", version: "4.2.1"
+}
+
+
